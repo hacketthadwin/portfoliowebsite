@@ -1,0 +1,842 @@
+/* the viewport is the visible area of a webpage as displayed on a user’s screen.
+ It represents the portion of the web page that’s visible to the user without scrolling. */
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Metal+Mania&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Rubik+Vinyl&family=Tiny5&display=swap');:root   /*root is pseudo class represents the root elements of the document */
+{
+    --bg-black-900:#f2f2fc;
+    --bg-black-100:#fdf9ff;
+    --bg-black-50:#e8dfec;
+    --text-black-900:#302e4d;
+    --text-black-900:#504e70;
+    /* Each of these variables is assigned a color value in hexadecimal format.
+     These values can later be referenced throughout your CSS */
+}
+body
+{
+    
+    line-height: 1.5;  
+    /*Sets the line height 
+    (spacing between lines of text) 
+    for the entire body to 1.5 times the font size,
+     making text easier to read.*/
+    font-size: 16px;
+    /* Sets the default font size of text within the <body> to 16 pixels.
+     This is often a good base size for readability. */
+     font-family: Kanit;
+}
+* /** is the universal selector, which applies the rules within to all elements in the document.*/
+{
+    margin: 0;
+    /* Resets the default margin for all elements to zero. 
+    This is often done to standardize spacing across browsers.*/
+    padding: 0;
+    /*Resets the default padding for all elements to zero. Like margin, 
+    this helps with cross-browser consistency.  */
+    outline: none;
+    /* Removes any default outline (such as the blue border on focused links or form elements). 
+    This can enhance the visual design but may affect accessibility (e.g., for keyboard navigation). */
+    text-decoration: none;
+    /* Removes any text decoration (such as underlining on links). 
+    Typically, this is used for cleaner styling, especially for links. */
+    box-sizing: border-box;
+    /* Sets the box-sizing model so that the element’s width and height 
+    include padding and borders. 
+    This makes layout calculations simpler and more predictable, 
+    especially when adding padding and borders. */
+}
+::before,::after  /*::before and ::after are pseudo-elements that can be added before or after an element’s content.*/
+{
+    box-sizing: border-box;
+    /* Ensures that the ::before and ::after pseudo-elements also use the border-box model,
+     matching the box-sizing rule set for all elements. 
+    This helps keep layouts consistent when using pseudo-elements. */
+}
+ul
+{
+    list-style: none;
+}
+.section
+{
+    background: var(--bg-black-900);
+    min-height: 100vh;
+    /* Sets the minimum height of the .section element to 100% of the viewport height (100vh).
+     This ensures that the section always fills the vertical space of the viewport,
+     regardless of content size. */
+    display: block;
+    /* Sets the display property of the .section element to block. 
+    Since section elements are block by default, 
+    this may be redundant here but ensures the element behaves as a block-level element. */
+
+    padding: 0 30px;
+    /* Positions the .section element relative to the viewport, 
+    making it “fixed” in place even when the user scrolls. 
+    This fixed positioning is useful for elements meant to remain in view. */
+
+    opacity: 1;
+    /* Sets the element’s opacity to 1, 
+    making it fully opaque (no transparency) */
+}
+.hidden
+{
+    display: none !important;
+}
+.main-content
+{
+    padding-left: 270px;
+}
+/* .aside targets an element with the aside class, 
+often used for sidebars.*/
+.padd-15
+{
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+.container
+{
+    max-width: 1100px;
+    width: 100%;
+    
+    margin: auto;
+}
+.section .container
+{
+    padding-top: 60px;
+    padding-bottom: 70px;
+}
+.section-title
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 60px;
+}
+.section-title h2
+{
+    font-family:Roboto Condensed ;
+    font-size:40px ;
+    color: var(--text-black-900);
+    font-weight: 700;
+    position: relative;
+
+}
+.section-title h2::before
+{
+    content: '';
+    height: 4px;
+    width: 50px;
+    background-color: green;
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+} 
+.section-title h2::after
+{
+    content: '';
+    height: 4px;
+    width: 25px;
+    background-color: green;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+
+
+}
+.row
+{
+    display: flex;
+    flex-wrap: wrap;  /*what does this do*/
+    margin-left: -15px;
+    margin-right: -15px;
+    position: relative;  /*relative to what*/
+}
+.btn
+{
+    font-size: 25px;
+    font-weight: 500;
+    padding: 12px 35px;
+    font-family: Roboto Condensed;
+    color: white;
+    border-radius: 40px;
+    background: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+    display: inline-block;
+    border: none;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+.btn:hover   /*it was not working before because i put a space between btn and :hover*/
+{
+    transform: scale(1.1);
+}
+.shadow-dark
+{
+    box-shadow: 0 0 20px rgba(48,46,77,1);
+}
+.aside
+{
+    width: 270px;
+    background:var(--bg-black-100) ;
+    /* Sets the background color of the sidebar to var(--bg-black-100), */
+    position: fixed;
+    /* Fixes the sidebar in place so it remains visible as the user scrolls. 
+    It’s positioned relative to the viewport. */
+    left: 0;
+    /* Positions the sidebar on the left edge of the viewport. */
+    top: 0;
+    /* Positions the sidebar on the top of the viewport. */
+    height: 100%;
+    border-right: 1px solid violet;
+    padding: 30px;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    z-index: 10;
+    /* Sets the stacking order,
+     placing the sidebar above elements with a lower z-index value (such as elements with default z-index: auto). */
+}
+.aside .logo
+{
+    position: absolute;
+    top: 50px;
+    font-family: Rubik Vinyl;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+.aside .logo a
+{
+    color: whitesmoke;
+    font-weight: 700;
+   padding: 15px 20px;
+   font-size: 30px;
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(103,60,102,1) 76%, rgba(0,212,255,1) 100%);
+letter-spacing: 2px;
+position: relative;
+}
+.aside .logo a span
+{
+    font-family:Tiny5;
+    font-size: 60px;
+    color: rgb(25, 192, 25);
+}
+.aside .logo a::before
+{
+    content:'';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-bottom: 7px solid #2C5F2D;
+    border-right: 7px solid #97BC62 ;
+    bottom: 0;
+    right: 0;
+
+}
+.aside .logo a::after
+{
+    content:'';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-top: 7px solid #2C5F2D;
+    border-left: 7px solid #97BC62 ;
+    top:0;
+    left:0;
+
+}
+.aside .nav-toggler
+{
+    height: 40px;
+    width: 45px;
+    border: 1px solid yellow;
+    cursor: pointer;
+    position: fixed;
+    left: 300px;
+    top: 20px;
+    border-radius: 5px;
+    background:linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(103,60,102,1) 76%, rgba(0,212,255,1) 100%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+}
+.aside .nav-toggler span
+{
+    height: 2px;
+    width: 18px;
+    background: green;
+    display: inline-block;
+    position: relative;
+
+}
+.aside .nav-toggler span::before
+{
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: green;
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+.aside .nav-toggler span::after
+{
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: green;
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+.aside .nav
+{
+    margin-top: 50px;
+
+
+}
+.aside .nav li
+{
+    margin-bottom: 20px;
+    display: block;
+}
+.aside .nav li a   /*space is important*/
+{
+    font-size: 16px;
+    font-weight:600 ;
+    display: block;
+    border-bottom: 1px solid black ;
+    color: black;
+    padding: 5px 15px;
+}
+.aside .nav li a.active
+{
+    color: #97BC62;
+}
+.aside .nav li a i
+{
+    margin-right:15px ;
+}
+/* home */
+.home 
+{
+    min-height: 100vh;
+    display: flex;
+    color: var(--text-black-900);
+    background-color:#f2f2fc ;
+}
+.home .home-info
+{
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+h3.hello
+{
+    font-size: 28px;
+    margin: 15px 0;
+    word-spacing: 2px;
+}
+h3.hello .first-letter
+{
+    font-family:Tiny5 ;
+    font-size: 34px;
+    word-spacing: 5px;
+    color:rgb(212, 14, 14);
+}
+h3.hello .last-letter
+{
+    font-family: Tiny5;
+    color:crimson;
+
+}
+h3.my-profession
+{
+    font-size: 40px;
+    margin: 15px 0;
+    color: black;
+}
+.typing-effect
+{
+    color: violet;
+
+}
+.home-info p
+{
+    margin-bottom:70px ;
+    font-size: 20px;
+
+}
+.home-info p .college-name
+{
+    color: rgb(240, 33, 78);
+    font-family: Anton SC;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+.home-info p .branch-name-in-electrical-font
+{
+    color: blue;
+    font-family:Metal Mania ;
+}
+.home .home-img
+{
+    flex: 0 0 40%;
+    max-width: 40%;
+    text-align: center;
+    position: relative;
+}
+.home .home-img::after
+{
+    content: '';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    right: 20px;
+    bottom: -40px;
+    border-bottom: 10px solid violet;
+    border-right: 10px solid violet;
+    
+}
+.home .home-img::before
+{
+    content: '';
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    left: 20px;
+    top: -40px;
+    border-top: 10px solid violet;
+    border-left: 10px solid violet;
+   
+    
+}
+.home .home-img img   /*we must use img after home-img class to access the img tag we used*/
+{
+    height: 400px;
+    margin: auto;
+    border-radius: 5px;
+
+}
+/* about */
+.about-section
+{
+    background-color: #f2f2fc;
+}
+.about-section .about-content
+{
+    flex: 0 0 100%;
+    max-width:100%;
+}
+.about-section .about-content .about-text
+{
+    flex:0 0 100%;
+    max-width: 100%;
+}
+.about-section .about-content .about-text h3
+{
+    font-size: 40px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+.about-section .about-content .about-text h3 span
+{
+    color: #97BC62;
+}
+.about-section .about-content .about-text p
+{
+    font-size:16px ;
+    line-height: 25px;
+    color:var(--text-black-900) ;
+}
+.about-section .about-content .personal-info
+{
+    flex: 0 0 60%;
+    max-width: 60%;
+    margin-top: 40px;
+}
+.about-section .about-content .personal-info .info-item
+{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.about-section .about-content .personal-info .info-item p
+{
+    font-weight: 600;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--text-black-900);
+    border-bottom: 1px solid #97BC62;
+}
+.about-section .about-content .personal-info .info-item p span
+{
+    font-weight: 400;
+    color: #97BC62;
+    margin-left: 4px;
+    display: inline-block;
+
+}
+.about-section .about-content .personal-info .buttons
+{
+    margin-top: 30px;
+
+}
+.about-section .about-content .personal-info .buttons .btn
+{
+    margin-right: 15px;
+    margin-top: 10px;
+}
+.about-section .about-content .skills
+{
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin-top: 40px;
+}
+.about-section .about-content .skills .skills-item
+{
+    flex: 0 0 100%;
+    min-width: 100%;
+}
+.about-section .about-content .skills .skills-item h5
+{
+    line-height: 40px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+}
+.about-section .about-content .skills .skills-item .progress
+{
+    background-color: green;
+    height: 7px;
+    border-radius: 4px;
+    width:100% ;
+    position: relative;
+}
+.about-section .about-content .skills .skills-item 
+{
+    margin-bottom: 25px;
+}
+.about-section .about-content .skills .skills-item .progress .progress-in
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #97BC62;
+} 
+.about-section .about-content .skills .skills-item .skill-percent
+{
+    position: absolute;
+    right: 0;
+    color: var(--text-black-900);
+    top: -40px;
+    font-weight: 400;
+    line-height:40px ;
+}
+.about-section .about-content .education
+{
+    flex:0 0 50%;
+    max-width: 50%;
+    margin-top: 30px;
+}
+.about-section .about-content .experience
+{
+    flex:0 0 50%;
+    max-width: 50%;
+    margin-top: 30px;
+
+}
+.about-section .about-content h3.title
+{
+    font-size: 30px;
+    margin-bottom:30px ;
+    font-weight: 700;
+    color: var(--text-black-900);
+}
+.about-section .about-content .timeline-box
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.about-section .about-content .timeline
+{
+    background-color: #97BC62;
+    padding: 30px 15px;
+    border: 2px solid green;
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+
+}
+.about-section .about-content .timeline .timeline-item
+{
+    position: relative;
+    padding-left: 37px;
+    padding-bottom: 50px;
+}
+.about-section .about-content .timeline .timeline-item:last-child
+{
+    padding-bottom: 0;
+}
+.about-section .about-content .timeline .timeline-item::before
+{
+    content: '';
+    width: 1px;
+    position: absolute;
+    height: 100%;
+    left: 7px;
+    top: 0;
+    background-color: green;
+}
+.about-section .about-content .timeline .circle-dot
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: green;
+}
+.about-section .about-content .timeline .timeline-date
+{
+    font-weight: 40px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--text-black-900);
+}
+.about-section .about-content .timeline .timeline-date .fa
+{
+    margin-right: 5px;
+
+}
+.about-section .about-content .timeline .timeline-title
+{
+    font-weight: 700;
+    font-size:15px ;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color: rgb(0, 2, 100);
+}
+.about-section .about-content .timeline .timeline-text
+{
+    line-height: 25px;
+    font-size: 14px;
+    text-align: justify;
+    color: black;
+    font-weight: 500;
+}
+/* =====service========= */
+.service-section
+{
+    background-color: #f2f2fc;
+}
+.service-section .container
+{
+    padding-bottom:40px;
+}
+.service-section .service-item
+{
+    margin-bottom: 30px;
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+}
+.service-section .service-item .service-item-inner
+{
+   background-color: #97BC62;
+   border: 2px solid green;
+   border-radius:10px;
+   padding: 30px 15px;
+   text-align: center;
+   transition: all 0.5s ease;
+
+}
+.service-section .service-item .service-item-inner:hover
+{
+    background-color: aqua;
+    border-radius: 15px;
+    padding: 40px 20px;
+    border: 4px solid darkblue;
+}
+.service-section .service-item .service-item-inner .icon
+{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 30px;
+    text-align: center;
+    background-color: var(--bg-black-50);
+    transition: all 0.3s ease;
+}
+.service-section .service-item .service-item-inner .icon .fa
+{
+    font-size: 40px;
+    line-height: 60px;
+    transition: all 0.3s ease;
+}
+.service-section .service-item .service-item-inner:hover .icon
+{
+    background-color: black;
+}
+.service-section .service-item .service-item-inner:hover .icon .fa
+{
+    color: aqua;
+}
+.service-section .service-item .service-item-inner h4
+{
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.service-section .service-item .service-item-inner p
+{
+    font-size: 16px;
+    line-height: 25px;
+}
+/* portfolio */
+.portfolio-section
+{
+    background-color: #f2f2fc;
+}
+.portfolio-section .container
+{
+    padding-bottom: 40px;
+}
+.portfolio-section .portfolio-heading
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 40px;
+}
+.portfolio-section .portfolio-heading h2
+{
+    color: var(--text-black-900);
+    font-weight: 500;
+}
+.portfolio-section .portfolio-item
+{
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    margin-bottom: 30px;
+}
+.portfolio-section .portfolio-item-inner
+{
+    border: 6px solid #97BC62;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+.portfolio-section .portfolio-item-inner .portfolio-img img
+{
+    width: 100%;
+    display: block;
+
+}
+/* contact us */
+.contact-us
+{
+    background-color: #f2f2fc;
+}
+.contact-us .contact-title
+{
+    color:green;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+
+
+}
+.contact-us .contact-sub-title
+{
+    color:var(--text-black-900);
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 60px;
+
+}
+.contact-us .contact-info-item
+{
+    flex: 0 0 25%;
+    max-width: 25%;
+    text-align: center;
+    margin-bottom: 60px;
+
+}
+.contact-us .contact-info-item .icon
+{
+    display: inline-block;
+}
+.contact-us .contact-info-item .icon .fa
+{
+    font-size: 25px;
+    color: green;
+    
+}
+.contact-us .contact-info-item h4
+{
+    font-size: 18px;
+   font-weight: 700;
+    color: var(--text-black-900);
+    text-transform: capitalize;
+    margin: 15px 0 5px;
+}
+.contact-us .contact-info-item p
+{
+    font-size: 16px;
+   font-weight: 500;
+   line-height: 25px ;
+    color: green;
+}
+.contact-us .contact-form
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+
+}
+.contact-us .contact-form .col-6
+{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+.contact-us .contact-form .col-12
+{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.contact-us .contact-form .form-item
+{
+    margin-bottom:20px;
+}
+.contact-us .contact-form .form-item .form-control
+{
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    background: #97BC62;
+    border: 1px solid green;
+    padding: 10px 25px;
+    font-size: 16px;
+    color: black;
+    font-weight: 700;
+    transition: all 0.5s each;
+}
+.contact-us .contact-form .form-item .form-control:focus
+{
+    box-shadow: 0 0 20px rgba(48,46,77,0.5);
+}
+.contact-us .contact-form .form-item textarea.form-control 
+{
+    height: 140px;
+    font-family: sans-serif;
+}
+.contact-us .contact-form .form-control::placeholder
+{
+    color: black;
+    font-weight: 540;
+}
+.contact-us .contact-form .btn
+{
+    height: 50px;
+    padding: 0 50px;
+}
